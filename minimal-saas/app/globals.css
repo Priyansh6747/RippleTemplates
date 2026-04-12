@@ -65,73 +65,80 @@
   }
 }
 
+/* ─── LIGHT THEME ─────────────────────────────────────────────────────────────
+   All values are now driven by Color.js via the ThemeProvider.
+   The --color-* variables are injected at runtime on <html>.
+   These :root values serve as a bridge so every shadcn component
+   automatically respects the Color.js palette.                              */
+
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
+  --background: var(--color-base-background, #F7F9FC);
+  --foreground: var(--color-text-primary, #0F172A);
+  --card: var(--color-surface-default, #FFFFFF);
+  --card-foreground: var(--color-text-primary, #0F172A);
+  --popover: var(--color-surface-default, #FFFFFF);
+  --popover-foreground: var(--color-text-primary, #0F172A);
+  --primary: var(--color-brand-primary, #5B4DFF);
+  --primary-foreground: var(--color-text-inverse, #FFFFFF);
+  --secondary: var(--color-brand-soft, #E8E6FF);
+  --secondary-foreground: var(--color-brand-primary, #5B4DFF);
+  --muted: var(--color-surface-alt, #F3F6FB);
+  --muted-foreground: var(--color-text-muted, #64748B);
+  --accent: var(--color-surface-hover, #F5F8FF);
+  --accent-foreground: var(--color-text-primary, #0F172A);
+  --destructive: var(--color-status-error, #EF4444);
+  --border: var(--color-border-default, #E2E8F0);
+  --input: var(--color-input-border, #E2E8F0);
+  --ring: var(--color-special-focusRing, #5B4DFF);
+  --chart-1: var(--color-brand-primary, #5B4DFF);
+  --chart-2: var(--color-status-info, #3B82F6);
+  --chart-3: var(--color-status-success, #22C55E);
+  --chart-4: var(--color-status-warning, #F59E0B);
+  --chart-5: var(--color-status-error, #EF4444);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: var(--color-surface-default, #FFFFFF);
+  --sidebar-foreground: var(--color-text-primary, #0F172A);
+  --sidebar-primary: var(--color-brand-primary, #5B4DFF);
+  --sidebar-primary-foreground: var(--color-text-inverse, #FFFFFF);
+  --sidebar-accent: var(--color-surface-hover, #F5F8FF);
+  --sidebar-accent-foreground: var(--color-text-primary, #0F172A);
+  --sidebar-border: var(--color-border-subtle, #EEF2F7);
+  --sidebar-ring: var(--color-special-focusRing, #5B4DFF);
 }
 
+/* ─── DARK THEME ──────────────────────────────────────────────────────────── */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: var(--color-base-background, #0B0F19);
+  --foreground: var(--color-text-primary, #F8FAFC);
+  --card: var(--color-surface-default, #121A2B);
+  --card-foreground: var(--color-text-primary, #F8FAFC);
+  --popover: var(--color-surface-default, #121A2B);
+  --popover-foreground: var(--color-text-primary, #F8FAFC);
+  --primary: var(--color-brand-primary, #7C72FF);
+  --primary-foreground: var(--color-text-inverse, #020617);
+  --secondary: var(--color-brand-soft, #1F1C3A);
+  --secondary-foreground: var(--color-text-accent, #8B82FF);
+  --muted: var(--color-surface-alt, #162036);
+  --muted-foreground: var(--color-text-muted, #94A3B8);
+  --accent: var(--color-surface-hover, #1F2A44);
+  --accent-foreground: var(--color-text-primary, #F8FAFC);
+  --destructive: var(--color-status-error, #EF4444);
+  --border: var(--color-border-default, #334155);
+  --input: var(--color-input-border, #334155);
+  --ring: var(--color-special-focusRing, #7C72FF);
+  --chart-1: var(--color-brand-primary, #7C72FF);
+  --chart-2: var(--color-status-info, #3B82F6);
+  --chart-3: var(--color-status-success, #22C55E);
+  --chart-4: var(--color-status-warning, #F59E0B);
+  --chart-5: var(--color-status-error, #EF4444);
+  --sidebar: var(--color-surface-default, #121A2B);
+  --sidebar-foreground: var(--color-text-primary, #F8FAFC);
+  --sidebar-primary: var(--color-brand-primary, #7C72FF);
+  --sidebar-primary-foreground: var(--color-text-inverse, #020617);
+  --sidebar-accent: var(--color-surface-hover, #1F2A44);
+  --sidebar-accent-foreground: var(--color-text-primary, #F8FAFC);
+  --sidebar-border: var(--color-border-subtle, #1E293B);
+  --sidebar-ring: var(--color-special-focusRing, #7C72FF);
 }
 
 @layer base {

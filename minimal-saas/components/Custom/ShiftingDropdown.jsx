@@ -1,53 +1,3 @@
-/*
- * ============================================================
- *  SHIFTING DROPDOWN NAV — TEMPLATE CUSTOMIZATION GUIDE
- * ============================================================
- *
- *  HOW TO EDIT THIS FILE
- *  ─────────────────────
- *
- *  1. SWAP THE COLOR THEME
- *     Import a different colors.js and toggle light/dark:
- *       import { colors } from "./colors";
- *       const theme = colors.dark;   // ← or colors.light
- *
- *  2. NAV TABS & DROPDOWN CONTENT
- *     Edit the TABS array at the bottom of this file.
- *     Each tab has:
- *       title      — label shown in the nav bar
- *       Component  — the React component rendered inside the dropdown panel
- *     The id is auto-assigned; don't set it manually.
- *
- *  3. DROPDOWN PANEL SIZE
- *     In the Content component, change `w-96` to any Tailwind width:
- *       "w-80"  → narrower
- *       "w-[28rem]"  → custom width
- *
- *  4. DROPDOWN PANEL BACKGROUND
- *     Content uses a gradient built from theme.surface colors.
- *     To use a solid color instead, replace the `background` style with:
- *       backgroundColor: theme.surface.default
- *
- *  5. ACCENT COLOR (icons, "View more" links, etc.)
- *     Change ACCENT_COLOR to any theme token or hex:
- *       const ACCENT_COLOR = theme.brand.primary;
- *
- *  6. BLOG IMAGES
- *     In the Blog component, replace the `src` values with your own image paths.
- *     Or swap the <img> tags for any preview component you like.
- *
- *  7. NAV WRAPPER BACKGROUND
- *     The outer <div> in ShiftingDropDown uses theme.base.background.
- *     Change it to any color or remove it if this nav sits inside another layout.
- *
- *  8. SLIDE ANIMATION DIRECTION
- *     In Content's inner motion.div, the x offset on enter is ±100px.
- *     Increase for a more dramatic slide, decrease/set 0 to disable:
- *       x: dir === "l" ? 100 : dir === "r" ? -100 : 0
- *
- * ============================================================
- */
-
 "use client"
 
 import React, { useEffect, useState } from "react";
@@ -59,28 +9,59 @@ import {
     FiPieChart,
 } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
-import { colors } from "@/Constants/Color"
+import { colors } from "@/Constants/Color";
+import Link from "next/link";
 
-// ─── THEME ────────────────────────────────────────────────────────────────────
-const theme = colors.dark; // toggle to colors.light for light mode
-
-// ─── ACCENT COLOR ─────────────────────────────────────────────────────────────
-// Used for icons, "View more" links, and other highlighted elements
+const theme = colors.dark;
 const ACCENT_COLOR = theme.text.accent;
 
-// ─── COMPONENT ────────────────────────────────────────────────────────────────
+const UI = {
+    tabs: [
+        { id: 1, title: "Products" },
+        { id: 2, title: "Pricing" },
+        { id: 3, title: "Blog" },
+    ],
+    productsMenu: {
+        categories: [
+            { heading: "Startup", links: ["Bookkeeping", "Invoicing"] },
+            { heading: "Scaleup", links: ["Live Coaching", "Reviews", "Tax/VAT"] },
+            { heading: "Enterprise", links: ["White glove", "SOX Compliance", "Staffing", "More"] },
+        ],
+        viewMore: "View all features"
+    },
+    pricingMenu: [
+        { icon: FiHome, label: "Startup", href: "/pricing" },
+        { icon: FiBarChart2, label: "Scaleup", href: "/pricing" },
+        { icon: FiPieChart, label: "Enterprise", href: "/pricing" },
+    ],
+    blogMenu: {
+        posts: [
+            { src: "/imgs/blog/4.png", title: "Announcing v2.0", desc: "The future of deployment." },
+            { src: "/imgs/blog/5.png", title: "New Infrastructure", desc: "Scaling across regions." },
+        ],
+        viewMore: "Read our blog"
+    }
+};
+
 export const ShiftingDropDown = () => {
     return (
-        <div
-            className="flex h-96 w-full justify-start p-8 md:justify-center"
-            style={{ backgroundColor: theme.base.background, color: theme.text.primary }}
+        <nav
+            className="flex h-20 w-full items-center justify-between px-8"
+            style={{ backgroundColor: theme.base.background, color: theme.text.primary, borderBottom: `1px solid ${theme.border.default}` }}
         >
+            <Link href="/" className="text-xl font-bold tracking-tight">Ripple<span style={{ color: theme.brand.primary }}>.</span></Link>
             <Tabs />
-        </div>
+            <Link
+                href="/login"
+                className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
+                style={{ backgroundColor: theme.buttons.primary.bg, color: theme.buttons.primary.text }}
+            >
+                Login
+            </Link>
+        </nav>
     );
 };
 
-// ─── TABS BAR ─────────────────────────────────────────────────────────────────
 const Tabs = () => {
     const [selected, setSelected] = useState(null);
     const [dir, setDir] = useState(null);
@@ -99,7 +80,7 @@ const Tabs = () => {
             onMouseLeave={() => handleSetSelected(null)}
             className="relative flex h-fit gap-2"
         >
-            {TABS.map((t) => (
+            {UI.tabs.map((t) => (
                 <Tab
                     key={t.id}
                     selected={selected}
@@ -117,7 +98,6 @@ const Tabs = () => {
     );
 };
 
-// ─── INDIVIDUAL TAB BUTTON ────────────────────────────────────────────────────
 const Tab = ({ children, tab, handleSetSelected, selected }) => {
     const isActive = selected === tab;
 
@@ -126,7 +106,7 @@ const Tab = ({ children, tab, handleSetSelected, selected }) => {
             id={`shift-tab-${tab}`}
             onMouseEnter={() => handleSetSelected(tab)}
             onClick={() => handleSetSelected(tab)}
-            className="flex items-center gap-1 rounded-full px-3 py-1.5 text-sm transition-colors"
+            className="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors"
             style={{
                 backgroundColor: isActive ? theme.surface.active : "transparent",
                 color: isActive ? theme.text.primary : theme.text.muted,
@@ -140,7 +120,6 @@ const Tab = ({ children, tab, handleSetSelected, selected }) => {
     );
 };
 
-// ─── DROPDOWN PANEL ───────────────────────────────────────────────────────────
 const Content = ({ selected, dir }) => {
     return (
         <motion.div
@@ -148,7 +127,7 @@ const Content = ({ selected, dir }) => {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
-            className="absolute left-0 top-[calc(100%_+_24px)] w-96 rounded-lg p-4"
+            className="absolute left-0 top-[calc(100%_+_24px)] w-96 rounded-2xl p-4 shadow-xl z-50"
             style={{
                 border: `1px solid ${theme.border.default}`,
                 background: `linear-gradient(to bottom, ${theme.surface.default}, ${theme.surface.alt})`,
@@ -157,7 +136,7 @@ const Content = ({ selected, dir }) => {
             <Bridge />
             <Nub selected={selected} />
 
-            {TABS.map((t) => (
+            {UI.tabs.map((t) => (
                 <div className="overflow-hidden" key={t.id}>
                     {selected === t.id && (
                         <motion.div
@@ -168,7 +147,9 @@ const Content = ({ selected, dir }) => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.25, ease: "easeInOut" }}
                         >
-                            <t.Component />
+                            {t.id === 1 && <Products />}
+                            {t.id === 2 && <Pricing />}
+                            {t.id === 3 && <Blog />}
                         </motion.div>
                     )}
                 </div>
@@ -177,12 +158,10 @@ const Content = ({ selected, dir }) => {
     );
 };
 
-// ─── HOVER BRIDGE (keeps dropdown open while mousing between tab and panel) ───
 const Bridge = () => (
     <div className="absolute -top-[24px] left-0 right-0 h-[24px]" />
 );
 
-// ─── ANIMATED NUB (pointer triangle) ─────────────────────────────────────────
 const Nub = ({ selected }) => {
     const [left, setLeft] = useState(0);
 
@@ -212,42 +191,35 @@ const Nub = ({ selected }) => {
             }}
             animate={{ left }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="absolute left-1/2 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-tl border"
+            className="absolute left-1/2 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-tl border z-40"
         />
     );
 };
 
-// ─── DROPDOWN CONTENT COMPONENTS ─────────────────────────────────────────────
-// Replace these with your own content. Each is referenced in the TABS array.
-
 const Products = () => (
     <div>
         <div className="flex gap-4">
-            {[
-                { heading: "Startup",    links: ["Bookkeeping", "Invoicing"] },
-                { heading: "Scaleup",    links: ["Live Coaching", "Reviews", "Tax/VAT"] },
-                { heading: "Enterprise", links: ["White glove", "SOX Compliance", "Staffing", "More"] },
-            ].map(({ heading, links }) => (
+            {UI.productsMenu.categories.map(({ heading, links }) => (
                 <div key={heading}>
-                    <h3 className="mb-2 text-sm font-medium" style={{ color: theme.text.primary }}>
+                    <h3 className="mb-2 text-sm font-semibold" style={{ color: theme.text.primary }}>
                         {heading}
                     </h3>
                     {links.map((link) => (
-                        <a
+                        <Link
                             key={link}
-                            href="#"
+                            href="/product"
                             className="mb-1 block text-sm transition-colors hover:opacity-100"
                             style={{ color: theme.text.muted }}
                             onMouseEnter={(e) => (e.currentTarget.style.color = theme.text.primary)}
                             onMouseLeave={(e) => (e.currentTarget.style.color = theme.text.muted)}
                         >
                             {link}
-                        </a>
+                        </Link>
                     ))}
                 </div>
             ))}
         </div>
-        <ViewMoreLink />
+        <ViewMoreLink href="/product" label={UI.productsMenu.viewMore} />
     </div>
 );
 
@@ -256,71 +228,55 @@ const Pricing = () => (
         className="grid grid-cols-3 gap-4"
         style={{ borderColor: theme.border.default }}
     >
-        {[
-            { icon: FiHome,     label: "Startup"    },
-            { icon: FiBarChart2, label: "Scaleup"  },
-            { icon: FiPieChart, label: "Enterprise" },
-        ].map(({ icon: Icon, label }, i) => (
-            <a
+        {UI.pricingMenu.map(({ icon: Icon, label, href }, i) => (
+            <Link
                 key={label}
-                href="#"
-                className="flex w-full flex-col items-center justify-center py-2 transition-colors"
+                href={href}
+                className="flex w-full flex-col items-center justify-center py-4 transition-colors rounded-xl"
                 style={{
                     color: theme.text.muted,
                     borderLeft: i > 0 ? `1px solid ${theme.border.default}` : "none",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = theme.text.primary)}
-                onMouseLeave={(e) => (e.currentTarget.style.color = theme.text.muted)}
+                onMouseEnter={(e) => {
+                    e.currentTarget.style.color = theme.text.primary;
+                    e.currentTarget.style.backgroundColor = theme.surface.active;
+                }}
+                onMouseLeave={(e) => {
+                    e.currentTarget.style.color = theme.text.muted;
+                    e.currentTarget.style.backgroundColor = "transparent";
+                }}
             >
-                <Icon className="mb-2 text-xl" style={{ color: ACCENT_COLOR }} />
-                <span className="text-xs">{label}</span>
-            </a>
+                <Icon className="mb-2 text-2xl" style={{ color: ACCENT_COLOR }} />
+                <span className="text-sm font-medium">{label}</span>
+            </Link>
         ))}
     </div>
 );
 
 const Blog = () => (
     <div>
-        <div className="grid grid-cols-2 gap-2">
-            {[
-                { src: "/imgs/blog/4.png", title: "Post Title One",   desc: "A short description for this blog post goes here." },
-                { src: "/imgs/blog/5.png", title: "Post Title Two",   desc: "A short description for this blog post goes here." },
-            ].map(({ src, title, desc }) => (
-                <a key={title} href="#">
-                    <img
-                        className="mb-2 h-14 w-full rounded object-cover"
-                        src={src}
-                        alt={title}
-                    />
-                    <h4 className="mb-0.5 text-sm font-medium" style={{ color: theme.text.primary }}>
+        <div className="grid grid-cols-2 gap-4">
+            {UI.blogMenu.posts.map(({ src, title, desc }) => (
+                <Link key={title} href="#" className="block p-2 rounded-xl transition-colors hover:bg-white/5">
+                    <div className="mb-2 h-20 w-full rounded-lg bg-gray-800" />
+                    <h4 className="mb-0.5 text-sm font-semibold" style={{ color: theme.text.primary }}>
                         {title}
                     </h4>
                     <p className="text-xs" style={{ color: theme.text.muted }}>{desc}</p>
-                </a>
+                </Link>
             ))}
         </div>
-        <ViewMoreLink />
+        <ViewMoreLink label={UI.blogMenu.viewMore} />
     </div>
 );
 
-// Shared "View more" link used inside dropdown panels
-const ViewMoreLink = ({ href = "#", label = "View more" }) => (
-    <a
+const ViewMoreLink = ({ href = "#", label }) => (
+    <Link
         href={href}
-        className="ml-auto mt-4 flex items-center gap-1 text-sm transition-opacity hover:opacity-80"
+        className="ml-auto mt-4 flex items-center gap-1 text-sm font-medium transition-opacity hover:opacity-80"
         style={{ color: ACCENT_COLOR }}
     >
         <span>{label}</span>
         <FiArrowRight />
-    </a>
+    </Link>
 );
-
-// ─── TABS CONFIG ──────────────────────────────────────────────────────────────
-// Add, remove, or reorder tabs here.
-// title     — label shown in the nav bar
-// Component — the dropdown panel component for this tab
-const TABS = [
-    { title: "Products", Component: Products },
-    { title: "Pricing",  Component: Pricing  },
-    { title: "Blog",     Component: Blog     },
-].map((n, idx) => ({ ...n, id: idx + 1 }));

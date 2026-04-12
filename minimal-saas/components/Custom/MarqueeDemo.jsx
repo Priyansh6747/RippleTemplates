@@ -1,6 +1,9 @@
 "use client"
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/ui/marquee";
+import { colors } from "@/Constants/Color";
+
+const theme = colors.dark;
 
 const UI = {
     reviews: [
@@ -43,12 +46,6 @@ const UI = {
     ]
 };
 
-const COLORS = {
-    primary: "#111827",
-    secondary: "#e5e7eb",
-    background: "transparent",
-};
-
 const ReviewCard = ({
     img,
     name,
@@ -59,29 +56,32 @@ const ReviewCard = ({
         <figure
             className={cn(
                 "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
-                "hover:bg-gray-950/[.05] dark:hover:bg-gray-50/[.15]"
+                "transition-colors"
             )}
             style={{
-                borderColor: COLORS.secondary,
-                backgroundColor: COLORS.background,
-                color: COLORS.primary
+                borderColor: theme.border.default,
+                backgroundColor: theme.surface.alt,
+                color: theme.text.primary
+            }}
+            onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = theme.surface.hover;
+            }}
+            onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = theme.surface.alt;
             }}
         >
             <div className="flex flex-row items-center gap-2">
                 <img className="rounded-full" width="32" height="32" alt="" src={img} />
                 <div className="flex flex-col">
-                    <figcaption className="text-sm font-medium">
-                        {/* UI:REVIEW_NAME (The display name of the reviewer) */}
+                    <figcaption className="text-sm font-semibold">
                         {name}
                     </figcaption>
-                    <p className="text-xs font-medium opacity-60">
-                        {/* UI:REVIEW_USERNAME (The username of the reviewer) */}
+                    <p className="text-xs font-medium opacity-60" style={{ color: theme.text.muted }}>
                         {username}
                     </p>
                 </div>
             </div>
-            <blockquote className="mt-2 text-sm">
-                {/* UI:REVIEW_BODY (The content of the review) */}
+            <blockquote className="mt-2 text-sm leading-relaxed" style={{ color: theme.text.muted }}>
                 {body}
             </blockquote>
         </figure>
@@ -104,8 +104,8 @@ export function MarqueeDemo() {
                     <ReviewCard key={review.username} {...review} />
                 ))}
             </Marquee>
-            <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
-            <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3" style={{ background: `linear-gradient(to right, ${theme.base.background}, transparent)` }}></div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3" style={{ background: `linear-gradient(to left, ${theme.base.background}, transparent)` }}></div>
         </div>
     );
 }

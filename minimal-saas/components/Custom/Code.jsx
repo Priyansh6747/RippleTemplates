@@ -6,44 +6,57 @@ import {
     CodeHeader,
 } from '@/components/animate-ui/components/animate/code';
 import { FileCode } from 'lucide-react';
+import { colors } from '@/Constants/Color';
+
+const theme = colors.dark;
+
+const UI = {
+    fileName: "middleware.ts",
+    language: "typescript",
+    containerSize: "w-full h-[400px]",
+    codeSnippet: `import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+ 
+export function middleware(request: NextRequest) {
+  // Check if user is authenticated
+  const token = request.cookies.get('token')
+  
+  if (!token) {
+    return NextResponse.redirect(new URL('/login', request.url))
+  }
+  
+  // Forward to edge compute
+  return NextResponse.next()
+}`
+};
 
 export const CodeDemo = ({
-    duration,
-    delay,
-    writing,
-    cursor,
+    duration = 2,
+    delay = 0.5,
+    writing = true,
+    cursor = true,
 }) => {
     return (
-        <Code
-            key={`${duration}-${delay}-${writing}-${cursor}`}
-            className="w-[420px] h-[372px]" // UI:CONTAINER_SIZE (line ~17)
-            code={`'use client';
- 
-import * as React from 'react';
-  
-function MyComponent(props) {
-  return (
-    <div {...props}>
-      {/* UI:INNER_TEXT (My Component) */}
-      <p>My Component</p>
-    </div>
-  );
-}
+        <div style={{ borderColor: theme.border.default, backgroundColor: theme.surface.default }} className="rounded-xl overflow-hidden shadow-2xl border">
+            <Code
+                key={`${duration}-${delay}-${writing}-${cursor}`}
+                className={UI.containerSize}
+                code={UI.codeSnippet}
+            >
+                <CodeHeader icon={FileCode} copyButton style={{ backgroundColor: theme.surface.alt, borderBottom: `1px solid ${theme.border.default}`, color: theme.text.primary }}>
+                    {UI.fileName}
+                </CodeHeader>
 
-export { MyComponent };`}
-        >
-            {/* UI:HEADER (file name display) */}
-            <CodeHeader icon={FileCode} copyButton>
-                my-component.tsx
-            </CodeHeader>
-
-            <CodeBlock
-                cursor={cursor} // UI:CURSOR_TOGGLE
-                lang="tsx" // UI:LANGUAGE_LABEL
-                writing={writing} // UI:TYPING_ANIMATION
-                duration={duration} // UI:ANIMATION_DURATION
-                delay={delay} // UI:ANIMATION_DELAY
-            />
-        </Code>
+                <div className="p-4 bg-gray-950 text-gray-200">
+                    <CodeBlock
+                        cursor={cursor}
+                        lang={UI.language}
+                        writing={writing}
+                        duration={duration}
+                        delay={delay}
+                    />
+                </div>
+            </Code>
+        </div>
     );
 };
