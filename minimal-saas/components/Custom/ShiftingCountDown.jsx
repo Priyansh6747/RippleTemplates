@@ -7,7 +7,7 @@ import { colors } from "@/Constants/Color"
 const theme = colors.dark;
 
 const UI = {
-    targetDate: "2025-12-31T23:59:59",
+    targetDate: "2026-12-31T23:59:59",
     units: [
         { unit: "Day", label: "days" },
         { unit: "Hour", label: "hours" },
