@@ -11,6 +11,7 @@ import {
     animate,
 } from "framer-motion";
 import { colors } from "@/Constants/Color";
+import config from "@/customise.json";
 
 const theme = colors.dark;
 
@@ -21,15 +22,8 @@ const AURORA_COLORS = [
     theme.status.success,
 ];
 
-const UI = {
-    badge: "v2.0 Beta Now Live",
-    headline: "Build the Future of SaaS",
-    subheadline: "Deploy breathtaking, modern web applications in minutes. Engineered for performance, designed for aesthetics. Everything you need to scale, right out of the box.",
-    ctaText: "Start Building Free",
-    ctaHref: "#",
-};
-
 export const AuroraHero = () => {
+    const UI = config.auroraHero;
     const color = useMotionValue(AURORA_COLORS[0]);
 
     useEffect(() => {

@@ -3,20 +3,12 @@
 import { useAnimate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { colors } from "@/Constants/Color"
+import config from "@/customise.json";
 
 const theme = colors.dark;
 
-const UI = {
-    targetDate: "2026-12-31T23:59:59",
-    units: [
-        { unit: "Day", label: "days" },
-        { unit: "Hour", label: "hours" },
-        { unit: "Minute", label: "minutes" },
-        { unit: "Second", label: "seconds" },
-    ]
-}
-
 const ShiftingCountdown = () => {
+    const UI = config.countdown;
     return (
         <div style={{ background: `linear-gradient(to bottom right, ${theme.brand.primary}, ${theme.status.info})` }} className="p-1">
             <div
@@ -24,15 +16,15 @@ const ShiftingCountdown = () => {
                 style={{ backgroundColor: theme.surface.default }}
             >
                 {UI.units.map(({ unit, label }, i) => (
-                    <CountdownItem key={unit} unit={unit} text={label} isLast={i === UI.units.length - 1} />
+                    <CountdownItem key={unit} unit={unit} text={label} isLast={i === UI.units.length - 1} targetDate={UI.targetDate} />
                 ))}
             </div>
         </div>
     );
 };
 
-const CountdownItem = ({ unit, text, isLast }) => {
-    const { ref, time } = useTimer(unit);
+const CountdownItem = ({ unit, text, isLast, targetDate }) => {
+    const { ref, time } = useTimer(unit, targetDate);
 
     return (
         <div
@@ -62,14 +54,14 @@ const CountdownItem = ({ unit, text, isLast }) => {
 
 export default ShiftingCountdown;
 
-const useTimer = (unit) => {
+const useTimer = (unit, targetDate) => {
     const [ref, animate] = useAnimate();
     const intervalRef = useRef(null);
     const timeRef = useRef(0);
     const [time, setTime] = useState(0);
 
     const handleCountdown = async () => {
-        const end = new Date(UI.targetDate);
+        const end = new Date(targetDate);
         const now = new Date();
         const distance = +end - +now;
 

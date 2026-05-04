@@ -4,53 +4,26 @@ import React from "react";
 import { motion } from "framer-motion";
 import { colors } from "@/Constants/Color";
 import Link from "next/link";
+import config from "@/customise.json";
 
 const theme = colors.dark;
 
-const UI = {
-    title: "Powerful abstractions",
-    titleAccent: "for modern apps.",
-    cta: "Explore the docs",
-    ctaHref: "/product",
-    cards: [
-        {
-            title: "Lightning Fast Builds",
-            demoLabel: "12ms",
-            gradientFrom: "from-blue-500",
-            gradientTo: "to-cyan-400",
-            demoTextColor: "text-white",
-            span: "col-span-12 md:col-span-4",
-        },
-        {
-            title: "Globally Distributed Edge",
-            demoLabel: "99.99% Uptime",
-            gradientFrom: "from-purple-500",
-            gradientTo: "to-pink-500",
-            demoTextColor: "text-white",
-            span: "col-span-12 md:col-span-8",
-        },
-        {
-            title: "Automated Deployments",
-            demoLabel: "git push",
-            gradientFrom: "from-emerald-400",
-            gradientTo: "to-teal-500",
-            demoTextColor: "text-white",
-            span: "col-span-12 md:col-span-8",
-        },
-        {
-            title: "Instant Rollbacks",
-            demoLabel: "1-Click",
-            gradientFrom: "from-orange-400",
-            gradientTo: "to-red-500",
-            demoTextColor: "text-white",
-            span: "col-span-12 md:col-span-4",
-        },
-    ]
-};
-
 export const BouncyCardsFeatures = () => {
-    const row1 = UI.cards.slice(0, 2);
-    const row2 = UI.cards.slice(2);
+    const UI = config.bouncyCards;
+    const cardsWithSpanAndColor = UI.cards.map((card, i) => {
+        let span = "col-span-12 md:col-span-8";
+        if (i % 4 === 0 || i % 4 === 3) {
+            span = "col-span-12 md:col-span-4";
+        }
+        return {
+            ...card,
+            span,
+            demoTextColor: "text-white"
+        };
+    });
+
+    const row1 = cardsWithSpanAndColor.slice(0, 2);
+    const row2 = cardsWithSpanAndColor.slice(2, 4);
 
     return (
         <section

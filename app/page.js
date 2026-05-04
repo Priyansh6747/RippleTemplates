@@ -6,21 +6,13 @@ import { MarqueeDemo } from "@/components/Custom/MarqueeDemo"
 import { colors } from "@/Constants/Color"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import config from "@/customise.json"
 
 const theme = colors.dark;
 
-const UI = {
-  socialProofTitle: "Trusted by the best teams",
-  socialProofSubtitle: "See what engineers and designers are saying about our platform.",
-  ctaTitle: "Ready to transform your workflow?",
-  ctaSubtitle: "Join thousands of developers building the future of the web.",
-  ctaPrimary: "Get Started Free",
-  ctaPrimaryHref: "/signup",
-  ctaSecondary: "Read the Documentation",
-  ctaSecondaryHref: "/docs"
-}
-
 export default function Home() {
+  const UI = config.homePage;
+
   return (
     <div style={{ backgroundColor: theme.base.background, minHeight: "100vh" }}>
       {/* 1. Hero Section using Aurora custom component */}

@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ShiftingDropDown } from "@/components/Custom/ShiftingDropdown";
 import { DockDemo } from "@/components/Custom/DockDemo";
+import config from "@/customise.json";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "SaaS Template — Ship Faster",
-  description: "A production-grade, theme-driven SaaS frontend template using beautiful animations.",
+  title: config.metadata.title,
+  description: config.metadata.description,
 };
 
 export default function RootLayout({ children }) {

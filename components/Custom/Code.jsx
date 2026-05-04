@@ -7,28 +7,9 @@ import {
 } from '@/components/animate-ui/components/animate/code';
 import { FileCode } from 'lucide-react';
 import { colors } from '@/Constants/Color';
+import config from '@/customise.json';
 
 const theme = colors.dark;
-
-const UI = {
-    fileName: "middleware.ts",
-    language: "typescript",
-    containerSize: "w-full h-[400px]",
-    codeSnippet: `import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
- 
-export function middleware(request: NextRequest) {
-  // Check if user is authenticated
-  const token = request.cookies.get('token')
-  
-  if (!token) {
-    return NextResponse.redirect(new URL('/login', request.url))
-  }
-  
-  // Forward to edge compute
-  return NextResponse.next()
-}`
-};
 
 export const CodeDemo = ({
     duration = 2,
@@ -36,6 +17,7 @@ export const CodeDemo = ({
     writing = true,
     cursor = true,
 }) => {
+    const UI = config.codeDemo;
     return (
         <div style={{ borderColor: theme.border.default, backgroundColor: theme.surface.default }} className="rounded-xl overflow-hidden shadow-2xl border">
             <Code

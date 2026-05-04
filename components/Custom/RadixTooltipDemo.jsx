@@ -6,11 +6,7 @@ import {
     TooltipContent,
 } from '@/components/ui/tooltip';
 import { buttonVariants } from '@/components/ui/button';
-
-const UI = {
-    buttonText: "Hover",
-    tooltipText: "Add to library"
-};
+import config from '@/customise.json';
 
 const COLORS = {
     primary: "#111827",
@@ -25,6 +21,7 @@ export function RadixTooltipDemo({
     alignOffset,
     followCursor,
 }) {
+    const UI = config.tooltip;
     return (
         <Tooltip followCursor={followCursor}>
             <TooltipTrigger

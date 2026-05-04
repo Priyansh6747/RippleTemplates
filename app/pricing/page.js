@@ -4,46 +4,12 @@ import ShiftingCountdown from "@/components/Custom/ShiftingCountDown"
 import { colors } from "@/Constants/Color"
 import Link from "next/link"
 import { Check } from "lucide-react"
+import config from "@/customise.json"
 
 const theme = colors.dark;
 
-const UI = {
-    launchHeader: "Early Access Pricing.",
-    launchSub: "Secure your spot before we launch to the public. Limited time offer for the first 500 customers.",
-    pricingTitle: "Simple, transparent pricing",
-    pricingSubtitle: "No hidden fees. No surprise charges. Cancel anytime.",
-    plans: [
-        {
-            name: "Starter",
-            price: "$0",
-            period: "/month",
-            description: "Perfect for indie hackers and small side projects.",
-            features: ["Up to 3 projects", "Basic Analytics", "Community Support", "1GB Storage"],
-            cta: "Get Started",
-            popular: false
-        },
-        {
-            name: "Pro",
-            price: "$29",
-            period: "/month",
-            description: "For professionals and growing businesses.",
-            features: ["Unlimited projects", "Advanced Analytics", "Priority Support", "100GB Storage", "Custom Domains"],
-            cta: "Upgrade to Pro",
-            popular: true
-        },
-        {
-            name: "Enterprise",
-            price: "Custom",
-            period: "",
-            description: "For large scale organizations with massive traffic.",
-            features: ["Unlimited everything", "Dedicated Account Manager", "24/7 SLA", "SSO/SAML", "On-premise deployment"],
-            cta: "Contact Sales",
-            popular: false
-        }
-    ]
-}
-
 export default function PricingPage() {
+    const UI = config.pricing;
     return (
         <div style={{ backgroundColor: theme.base.background, minHeight: "100vh" }}>
 
@@ -80,7 +46,7 @@ export default function PricingPage() {
                             >
                                 {plan.popular && (
                                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider" style={{ backgroundColor: theme.brand.primary, color: theme.text.inverse }}>
-                                        Most Popular
+                                        {UI.popularBadge || "Most Popular"}
                                     </div>
                                 )}
                                 <h3 className="text-xl font-semibold mb-2" style={{ color: theme.text.primary }}>{plan.name}</h3>

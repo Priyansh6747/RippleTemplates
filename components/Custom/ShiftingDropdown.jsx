@@ -11,36 +11,15 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { colors } from "@/Constants/Color";
 import Link from "next/link";
+import config from "@/customise.json";
 
 const theme = colors.dark;
 const ACCENT_COLOR = theme.text.accent;
 
-const UI = {
-    tabs: [
-        { id: 1, title: "Products" },
-        { id: 2, title: "Pricing" },
-        { id: 3, title: "Blog" },
-    ],
-    productsMenu: {
-        categories: [
-            { heading: "Startup", links: ["Bookkeeping", "Invoicing"] },
-            { heading: "Scaleup", links: ["Live Coaching", "Reviews", "Tax/VAT"] },
-            { heading: "Enterprise", links: ["White glove", "SOX Compliance", "Staffing", "More"] },
-        ],
-        viewMore: "View all features"
-    },
-    pricingMenu: [
-        { icon: FiHome, label: "Startup", href: "/pricing" },
-        { icon: FiBarChart2, label: "Scaleup", href: "/pricing" },
-        { icon: FiPieChart, label: "Enterprise", href: "/pricing" },
-    ],
-    blogMenu: {
-        posts: [
-            { src: "/imgs/blog/4.png", title: "Announcing v2.0", desc: "The future of deployment." },
-            { src: "/imgs/blog/5.png", title: "New Infrastructure", desc: "Scaling across regions." },
-        ],
-        viewMore: "Read our blog"
-    }
+const ICON_MAP = {
+    Startup: FiHome,
+    Scaleup: FiBarChart2,
+    Enterprise: FiPieChart,
 };
 
 export const ShiftingDropDown = () => {
@@ -49,14 +28,14 @@ export const ShiftingDropDown = () => {
             className="flex h-20 w-full items-center justify-between px-8"
             style={{ backgroundColor: theme.base.background, color: theme.text.primary, borderBottom: `1px solid ${theme.border.default}` }}
         >
-            <Link href="/" className="text-xl font-bold tracking-tight">Ripple<span style={{ color: theme.brand.primary }}>.</span></Link>
+            <Link href="/" className="text-xl font-bold tracking-tight">{config.brand.siteName}<span style={{ color: theme.brand.primary }}>.</span></Link>
             <Tabs />
             <Link
-                href="/login"
+                href={config.nav.loginHref}
                 className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
                 style={{ backgroundColor: theme.buttons.primary.bg, color: theme.buttons.primary.text }}
             >
-                Login
+                {config.navDropdown.loginLabel || "Login"}
             </Link>
         </nav>
     );
@@ -65,6 +44,7 @@ export const ShiftingDropDown = () => {
 const Tabs = () => {
     const [selected, setSelected] = useState(null);
     const [dir, setDir] = useState(null);
+    const UI = config.navDropdown;
 
     const handleSetSelected = (val) => {
         if (typeof selected === "number" && typeof val === "number") {
@@ -92,7 +72,7 @@ const Tabs = () => {
             ))}
 
             <AnimatePresence>
-                {selected && <Content dir={dir} selected={selected} />}
+                {selected && <Content dir={dir} selected={selected} UI={UI} />}
             </AnimatePresence>
         </div>
     );
@@ -120,7 +100,7 @@ const Tab = ({ children, tab, handleSetSelected, selected }) => {
     );
 };
 
-const Content = ({ selected, dir }) => {
+const Content = ({ selected, dir, UI }) => {
     return (
         <motion.div
             id="overlay-content"
@@ -147,9 +127,9 @@ const Content = ({ selected, dir }) => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.25, ease: "easeInOut" }}
                         >
-                            {t.id === 1 && <Products />}
-                            {t.id === 2 && <Pricing />}
-                            {t.id === 3 && <Blog />}
+                            {t.id === 1 && <Products UI={UI} />}
+                            {t.id === 2 && <Pricing UI={UI} />}
+                            {t.id === 3 && <Blog UI={UI} />}
                         </motion.div>
                     )}
                 </div>
@@ -196,7 +176,7 @@ const Nub = ({ selected }) => {
     );
 };
 
-const Products = () => (
+const Products = ({ UI }) => (
     <div>
         <div className="flex gap-4">
             {UI.productsMenu.categories.map(({ heading, links }) => (
@@ -223,12 +203,14 @@ const Products = () => (
     </div>
 );
 
-const Pricing = () => (
+const Pricing = ({ UI }) => (
     <div
         className="grid grid-cols-3 gap-4"
         style={{ borderColor: theme.border.default }}
     >
-        {UI.pricingMenu.map(({ icon: Icon, label, href }, i) => (
+        {UI.pricingMenu.map(({ label, href }, i) => {
+            const Icon = ICON_MAP[label] || FiPieChart;
+            return (
             <Link
                 key={label}
                 href={href}
@@ -249,11 +231,11 @@ const Pricing = () => (
                 <Icon className="mb-2 text-2xl" style={{ color: ACCENT_COLOR }} />
                 <span className="text-sm font-medium">{label}</span>
             </Link>
-        ))}
+        )})}
     </div>
 );
 
-const Blog = () => (
+const Blog = ({ UI }) => (
     <div>
         <div className="grid grid-cols-2 gap-4">
             {UI.blogMenu.posts.map(({ src, title, desc }) => (

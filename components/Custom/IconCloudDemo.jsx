@@ -1,45 +1,12 @@
 import { IconCloud } from "@/components/ui/icon-cloud";
-
-const UI = {
-    iconSlugs: [
-        "typescript",
-        "javascript",
-        "dart",
-        "java",
-        "react",
-        "flutter",
-        "android",
-        "html5",
-        "css3",
-        "nodedotjs",
-        "express",
-        "nextdotjs",
-        "prisma",
-        "amazonaws",
-        "postgresql",
-        "firebase",
-        "nginx",
-        "vercel",
-        "testinglibrary",
-        "jest",
-        "cypress",
-        "docker",
-        "git",
-        "jira",
-        "github",
-        "gitlab",
-        "visualstudiocode",
-        "androidstudio",
-        "sonarqube",
-        "figma"
-    ]
-};
+import config from "@/customise.json";
 
 const COLORS = {
     background: "transparent",
 };
 
 export function IconCloudDemo() {
+    const UI = config.iconCloud;
     /* UI:ICON_SLUGS (The list of simpleicons slugs to display in the cloud) */
     const images = UI.iconSlugs.map(
         (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`

@@ -1,0 +1,682 @@
+{
+  "_instructions": "This is the ONLY file you edit to customise this template. Do not touch any .js or .jsx files.",
+  "brand": {
+    "siteName": "Nexus",
+    "siteTagline": "Deploy code faster with AI"
+  },
+  "brandColors": {
+    "light": {
+      "primary": "#5B4DFF",
+      "hover": "#4A3EE6",
+      "active": "#3930B3",
+      "soft": "#E8E6FF",
+      "subtle": "#F4F3FF",
+      "accent": "#5B4DFF"
+    },
+    "dark": {
+      "primary": "#7C72FF",
+      "hover": "#635BCC",
+      "active": "#4A4499",
+      "soft": "#1F1E2E",
+      "subtle": "#262536",
+      "accent": "#7C72FF"
+    }
+  },
+  "nav": {
+    "links": [
+      {
+        "label": "Features",
+        "href": "#features"
+      },
+      {
+        "label": "Pricing",
+        "href": "/pricing"
+      },
+      {
+        "label": "Docs",
+        "href": "/docs"
+      }
+    ],
+    "cta": "Get Started",
+    "ctaHref": "/signup",
+    "login": "Sign In",
+    "loginHref": "/login"
+  },
+  "navDropdown": {
+    "tabs": [
+      { "id": 1, "title": "Products" },
+      { "id": 2, "title": "Pricing" },
+      { "id": 3, "title": "Blog" }
+    ],
+    "productsMenu": {
+      "categories": [
+        { "heading": "Startup", "links": ["Bookkeeping", "Invoicing"] },
+        { "heading": "Scaleup", "links": ["Live Coaching", "Reviews", "Tax/VAT"] },
+        { "heading": "Enterprise", "links": ["White glove", "SOX Compliance", "Staffing", "More"] }
+      ],
+      "viewMore": "View all features"
+    },
+    "pricingMenu": [
+      { "label": "Startup", "href": "/pricing" },
+      { "label": "Scaleup", "href": "/pricing" },
+      { "label": "Enterprise", "href": "/pricing" }
+    ],
+    "blogMenu": {
+      "posts": [
+        { "src": "/imgs/blog/4.png", "title": "Announcing v2.0", "desc": "The future of deployment." },
+        { "src": "/imgs/blog/5.png", "title": "New Infrastructure", "desc": "Scaling across regions." }
+      ],
+      "viewMore": "Read our blog"
+    },
+    "loginLabel": "Login"
+  },
+  "dockNav": [
+    { "href": "/", "icon": "Home", "label": "Home" },
+    { "href": "/product", "icon": "Package", "label": "Product" },
+    { "href": "/features", "icon": "Component", "label": "Features" },
+    { "href": "/pricing", "icon": "FileText", "label": "Pricing" },
+    { "href": "/dashboard", "icon": "LayoutDashboard", "label": "Dashboard" }
+  ],
+  "auroraHero": {
+    "badge": "v2.0 Beta Now Live",
+    "headline": "Ship at the speed of thought",
+    "subheadline": "Automate your entire CI/CD pipeline with AI-driven testing and deployment. Reduce merge times by 80%.",
+    "ctaText": "Start Building Free",
+    "ctaHref": "/signup"
+  },
+  "bouncyCards": {
+    "title": "Built for",
+    "titleAccent": "modern engineering teams.",
+    "cta": "Explore the docs",
+    "ctaHref": "/features",
+    "cards": [
+      {
+        "title": "Instant Deploys",
+        "demoLabel": "12ms",
+        "gradientFrom": "from-blue-500",
+        "gradientTo": "to-cyan-400"
+      },
+      {
+        "title": "Smart Tests",
+        "demoLabel": "100% Coverage",
+        "gradientFrom": "from-purple-500",
+        "gradientTo": "to-pink-500"
+      },
+      {
+        "title": "Auto Rollbacks",
+        "demoLabel": "Zero Downtime",
+        "gradientFrom": "from-emerald-400",
+        "gradientTo": "to-teal-500"
+      },
+      {
+        "title": "Global Edge",
+        "demoLabel": "24 Regions",
+        "gradientFrom": "from-indigo-500",
+        "gradientTo": "to-violet-500"
+      }
+    ]
+  },
+  "marqueeReviews": [
+    {
+      "name": "Sarah Chen",
+      "username": "@sarahcodes",
+      "body": "Nexus cut our deployment time from hours to literally minutes. Incredible tool.",
+      "img": "https://avatar.vercel.sh/sarah"
+    },
+    {
+      "name": "Mike Johnson",
+      "username": "@mikej",
+      "body": "The AI test generation alone is worth 10x the price. Absolute game changer.",
+      "img": "https://avatar.vercel.sh/mike"
+    },
+    {
+      "name": "Elena Rodriguez",
+      "username": "@elenadev",
+      "body": "Finally, a CI/CD platform that doesn't require a PhD in DevOps to understand.",
+      "img": "https://avatar.vercel.sh/elena"
+    },
+    {
+      "name": "David Kim",
+      "username": "@dkim_tech",
+      "body": "We migrated our entire infra to Nexus in a weekend. Smooth sailing since.",
+      "img": "https://avatar.vercel.sh/david"
+    },
+    {
+      "name": "Rachel Foster",
+      "username": "@rfoster",
+      "body": "The auto-rollback saved our production environment twice this week. Love it.",
+      "img": "https://avatar.vercel.sh/rachel"
+    },
+    {
+      "name": "Tom Baker",
+      "username": "@tbaker",
+      "body": "Best developer experience I've seen in an infrastructure product. Period.",
+      "img": "https://avatar.vercel.sh/tom"
+    }
+  ],
+  "homePage": {
+    "socialProofTitle": "Trusted by the best teams",
+    "socialProofSubtitle": "Join thousands of developers shipping better software, faster.",
+    "ctaTitle": "Ready to transform your workflow?",
+    "ctaSubtitle": "Join over 10,000 engineering teams already building with Nexus.",
+    "ctaPrimary": "Start Free Trial",
+    "ctaPrimaryHref": "/signup",
+    "ctaSecondary": "Read Documentation",
+    "ctaSecondaryHref": "/docs"
+  },
+  "hero": {
+    "badge": "Now in Public Beta",
+    "title": "The intelligent CI/CD platform for",
+    "titleAccent": "fast-moving teams.",
+    "subtitle": "Stop wrestling with complex YAML files. Nexus uses AI to automatically build, test, and deploy your code with zero configuration.",
+    "ctaPrimary": "Get Started",
+    "ctaPrimaryHref": "/signup",
+    "ctaSecondary": "Watch Demo",
+    "ctaSecondaryHref": "#product-demo",
+    "socialProof": "Trusted by 2,000+ teams worldwide"
+  },
+  "features": {
+    "badge": "Features",
+    "title": "Everything you need to ship",
+    "titleAccent": "with confidence.",
+    "subtitle": "Powerful primitives designed to streamline your entire software development lifecycle.",
+    "items": [
+      {
+        "icon": "Zap",
+        "title": "Lightning Fast",
+        "description": "Our distributed build caching guarantees sub-minute build times for any size project."
+      },
+      {
+        "icon": "Shield",
+        "title": "Secure by Default",
+        "description": "Automated vulnerability scanning and secrets management built into every pipeline."
+      },
+      {
+        "icon": "Code",
+        "title": "Zero Config",
+        "description": "Nexus analyzes your repository and automatically generates the optimal deployment pipeline."
+      },
+      {
+        "icon": "Globe",
+        "title": "Edge Deployments",
+        "description": "Push your application to 24 global edge locations with a single git commit."
+      },
+      {
+        "icon": "Sparkles",
+        "title": "AI Auto-Fix",
+        "description": "When tests fail, our AI suggests the exact code change needed to fix the broken build."
+      },
+      {
+        "icon": "Layers",
+        "title": "Preview Environments",
+        "description": "Instant, shareable preview environments generated automatically for every pull request."
+      }
+    ]
+  },
+  "productDemo": {
+    "badge": "Product",
+    "title": "See it in action",
+    "subtitle": "Watch how Nexus simplifies complex deployment workflows.",
+    "tabs": [
+      {
+        "label": "Auto Setup",
+        "value": "setup"
+      },
+      {
+        "label": "Smart Tests",
+        "value": "tests"
+      },
+      {
+        "label": "Edge Deploy",
+        "value": "deploy"
+      }
+    ]
+  },
+  "testimonials": {
+    "badge": "Testimonials",
+    "title": "Loved by engineering teams",
+    "titleAccent": "everywhere.",
+    "subtitle": "See what developers are saying about their experience with Nexus.",
+    "reviews": [
+      {
+        "name": "Alex Mercer",
+        "username": "@amercer",
+        "role": "CTO at TechFlow",
+        "body": "We reduced our deployment failure rate by 95% after switching to Nexus.",
+        "img": "https://avatar.vercel.sh/alex"
+      },
+      {
+        "name": "Jamie Lee",
+        "username": "@jlee_dev",
+        "role": "Lead Engineer at ScaleApp",
+        "body": "The AI auto-fix feature is magic. It accurately patches 80% of our test failures.",
+        "img": "https://avatar.vercel.sh/jamie"
+      },
+      {
+        "name": "Sam Patel",
+        "username": "@sampatel",
+        "role": "DevOps Manager at CloudSync",
+        "body": "Preview environments for every PR has completely transformed our QA process.",
+        "img": "https://avatar.vercel.sh/sam"
+      },
+      {
+        "name": "Taylor Swift",
+        "username": "@tswift_code",
+        "role": "Frontend Dev at MusicStream",
+        "body": "I can finally deploy full-stack apps without touching a single config file.",
+        "img": "https://avatar.vercel.sh/taylor"
+      },
+      {
+        "name": "Jordan Smith",
+        "username": "@jsmith",
+        "role": "VP Engineering at DataCorp",
+        "body": "Nexus pays for itself in engineering hours saved within the first week.",
+        "img": "https://avatar.vercel.sh/jordan"
+      },
+      {
+        "name": "Casey Jones",
+        "username": "@caseyj",
+        "role": "Full Stack Dev at StartupX",
+        "body": "Edge deployments used to be a nightmare. Now it's literally just 'git push'.",
+        "img": "https://avatar.vercel.sh/casey"
+      },
+      {
+        "name": "Morgan Davis",
+        "username": "@mdavis",
+        "role": "SRE at BigBank",
+        "body": "The security scanning gives us peace of mind without slowing down velocity.",
+        "img": "https://avatar.vercel.sh/morgan"
+      },
+      {
+        "name": "Riley Wilson",
+        "username": "@rwilson",
+        "role": "Indie Hacker",
+        "body": "As a solo dev, Nexus acts like my entire DevOps team. Truly indispensable.",
+        "img": "https://avatar.vercel.sh/riley"
+      }
+    ]
+  },
+  "pricing": {
+    "badge": "Pricing",
+    "title": "Simple, predictable",
+    "titleAccent": "pricing.",
+    "subtitle": "Start for free, upgrade when you need more power. No hidden fees.",
+    "launchHeader": "Early Access Pricing.",
+    "launchSub": "Lock in these introductory rates before our v2.0 public launch next month.",
+    "pricingTitle": "Simple, transparent pricing",
+    "pricingSubtitle": "Choose the perfect plan for your team's size and deployment needs.",
+    "plans": [
+      {
+        "name": "Starter",
+        "price": "$0",
+        "period": "/month",
+        "description": "Perfect for hobbyists and side projects.",
+        "features": [
+          "1 User",
+          "100 Builds/month",
+          "Community Support",
+          "Basic Edge Network"
+        ],
+        "cta": "Start Free",
+        "popular": false
+      },
+      {
+        "name": "Pro",
+        "price": "$29",
+        "period": "/month",
+        "description": "For growing teams that need more power.",
+        "features": [
+          "Up to 10 Users",
+          "Unlimited Builds",
+          "Priority Support",
+          "Global Edge Network",
+          "Preview Environments",
+          "AI Auto-Fix"
+        ],
+        "cta": "Get Started",
+        "popular": true
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "period": "",
+        "description": "For large organizations with custom needs.",
+        "features": [
+          "Unlimited Users",
+          "Dedicated Hardware",
+          "24/7 Phone Support",
+          "Custom SLAs",
+          "SSO & Advanced Auth"
+        ],
+        "cta": "Contact Sales",
+        "popular": false
+      }
+    ],
+    "popularBadge": "Most Popular"
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Frequently asked",
+    "titleAccent": "questions.",
+    "items": [
+      {
+        "q": "How does Nexus integrate with my existing repo?",
+        "a": "Nexus connects directly to your GitHub, GitLab, or Bitbucket account. We automatically detect your framework and configure the pipeline."
+      },
+      {
+        "q": "Do you support monorepos?",
+        "a": "Yes! Nexus has first-class support for Turborepo, Nx, and custom monorepo setups with intelligent caching across packages."
+      },
+      {
+        "q": "Is my source code secure?",
+        "a": "Absolutely. We are SOC2 Type II certified. Your code is never stored on our servers after the build completes, and we encrypt all secrets."
+      },
+      {
+        "q": "Can I use custom Dockerfiles?",
+        "a": "Yes, if our zero-config setup doesn't meet your needs, you can provide a custom Dockerfile and we'll use that for your deployment."
+      },
+      {
+        "q": "What happens if I go over my build limit?",
+        "a": "We'll softly pause new builds and notify you. We never charge overage fees automatically without your explicit consent."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to get started?",
+    "subtitle": "Join 5,000 teams shipping faster with Nexus.",
+    "ctaPrimary": "Start Building Free",
+    "ctaPrimaryHref": "/signup",
+    "ctaSecondary": "Talk to Sales",
+    "ctaSecondaryHref": "/contact"
+  },
+  "footer": {
+    "brand": "Nexus",
+    "tagline": "Deploy code faster with AI",
+    "copyright": "© 2026 Nexus Inc. All rights reserved.",
+    "groups": [
+      {
+        "title": "Product",
+        "links": [
+          {
+            "label": "Features",
+            "href": "#features"
+          },
+          {
+            "label": "Integrations",
+            "href": "/integrations"
+          },
+          {
+            "label": "Pricing",
+            "href": "/pricing"
+          }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          {
+            "label": "About Us",
+            "href": "/about"
+          },
+            {
+            "label": "Careers",
+            "href": "/careers"
+          },
+          {
+            "label": "Blog",
+            "href": "/blog"
+          }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          {
+            "label": "Privacy Policy",
+            "href": "/privacy"
+          },
+          {
+            "label": "Terms of Service",
+            "href": "/terms"
+          },
+          {
+            "label": "Security",
+            "href": "/security"
+          }
+        ]
+      }
+    ]
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to manage your deployments.",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••",
+      "submit": "Sign In",
+      "forgotPassword": "Forgot password?",
+      "switchText": "Don't have an account?",
+      "switchLink": "Sign up",
+      "switchHref": "/signup",
+      "divider": "or",
+      "socialGoogle": "Continue with Google",
+      "socialGithub": "Continue with GitHub"
+    },
+    "signup": {
+      "title": "Create your account",
+      "subtitle": "Get started in 2 minutes. No credit card required.",
+      "nameLabel": "Full Name",
+      "namePlaceholder": "Jane Doe",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••",
+      "submit": "Create Account",
+      "switchText": "Already have an account?",
+      "switchLink": "Sign in",
+      "switchHref": "/login",
+      "divider": "or",
+      "socialGoogle": "Continue with Google",
+      "socialGithub": "Continue with GitHub"
+    }
+  },
+  "dashboard": {
+    "sidebarTitle": "Nexus",
+    "sidebarNav": [
+      {
+        "label": "Dashboard",
+        "icon": "LayoutDashboard",
+        "href": "/dashboard"
+      },
+      {
+        "label": "Analytics",
+        "icon": "BarChart3",
+        "href": "#"
+      },
+      {
+        "label": "Projects",
+        "icon": "FolderKanban",
+        "href": "#"
+      },
+      {
+        "label": "Team",
+        "icon": "Users",
+        "href": "#"
+      },
+      {
+        "label": "Settings",
+        "icon": "Settings",
+        "href": "#"
+      }
+    ],
+    "sidebarGroupLabel": "Navigation",
+    "headerTitle": "Overview",
+    "headerSubtitle": "Welcome back! Here's what's happening with your deployments.",
+    "stats": [
+      {
+        "label": "Total Builds",
+        "value": "1,284",
+        "change": "+14.2%",
+        "trend": "up"
+      },
+      {
+        "label": "Success Rate",
+        "value": "98.5%",
+        "change": "+2.1%",
+        "trend": "up"
+      },
+      {
+        "label": "Avg Build Time",
+        "value": "42s",
+        "change": "-18.5%",
+        "trend": "down"
+      },
+      {
+        "label": "Active Errors",
+        "value": "3",
+        "change": "-5.0%",
+        "trend": "down"
+      }
+    ],
+    "statsCompareLabel": "vs last month",
+    "chartTitle": "Deployments Over Time",
+    "chartData": [
+      {
+        "month": "Jan",
+        "revenue": 450
+      },
+      {
+        "month": "Feb",
+        "revenue": 520
+      },
+      {
+        "month": "Mar",
+        "revenue": 610
+      },
+      {
+        "month": "Apr",
+        "revenue": 580
+      },
+      {
+        "month": "May",
+        "revenue": 740
+      },
+      {
+        "month": "Jun",
+        "revenue": 890
+      },
+      {
+        "month": "Jul",
+        "revenue": 950
+      }
+    ],
+    "recentTitle": "Recent Deployments",
+    "recentColumns": ["Name", "Email", "Amount", "Status"],
+    "recentItems": [
+      {
+        "name": "API Service",
+        "email": "Commit 8f2a9b1",
+        "amount": "45s",
+        "status": "Completed"
+      },
+      {
+        "name": "Frontend App",
+        "email": "Commit 3c4d5e6",
+        "amount": "1m 12s",
+        "status": "Completed"
+      },
+      {
+        "name": "Auth Worker",
+        "email": "Commit 7a8b9c0",
+        "amount": "--",
+        "status": "Pending"
+      },
+      {
+        "name": "Billing Service",
+        "email": "Commit 1d2e3f4",
+        "amount": "38s",
+        "status": "Completed"
+      },
+      {
+        "name": "Admin Panel",
+        "email": "Commit 5e6f7g8",
+        "amount": "12s",
+        "status": "Processing"
+      }
+    ]
+  },
+  "featuresPage": {
+    "headerTitle": "Product Features",
+    "headerSubtitle": "Explore the powerful tools that make Nexus the best CI/CD platform.",
+    "developerTitle": "Built for developer experience.",
+    "developerDesc": "We've obsessed over every detail of the developer workflow. From intelligent autocomplete in our CLI to real-time build logs in the browser, everything is designed to keep you in the flow state.",
+    "integrationTitle": "Ecosystem Integration",
+    "integrationDesc": "Nexus plays nicely with your existing stack. With native integrations for Slack, Jira, Datadog, and AWS, your deployment data is exactly where you need it to be."
+  },
+  "productPage": {
+    "launchHeader": "Nexus v2.0 is dropping soon.",
+    "launchSub": "Get early access to our revolutionary AI pipeline generation feature."
+  },
+  "countdown": {
+    "targetDate": "2026-12-31T23:59:59",
+    "units": [
+      { "unit": "Day", "label": "days" },
+      { "unit": "Hour", "label": "hours" },
+      { "unit": "Minute", "label": "minutes" },
+      { "unit": "Second", "label": "seconds" }
+    ]
+  },
+  "iconCloud": {
+    "iconSlugs": [
+        "typescript",
+        "javascript",
+        "dart",
+        "java",
+        "react",
+        "flutter",
+        "android",
+        "html5",
+        "css3",
+        "nodedotjs",
+        "express",
+        "nextdotjs",
+        "prisma",
+        "amazonaws",
+        "postgresql",
+        "firebase",
+        "nginx",
+        "vercel",
+        "testinglibrary",
+        "jest",
+        "cypress",
+        "docker",
+        "git",
+        "jira",
+        "github",
+        "gitlab",
+        "visualstudiocode",
+        "androidstudio",
+        "sonarqube",
+        "figma"
+    ]
+  },
+  "codeDemo": {
+    "fileName": "middleware.ts",
+    "language": "typescript",
+    "containerSize": "w-full h-[400px]",
+    "codeSnippet": "import { NextResponse } from 'next/server'\nimport type { NextRequest } from 'next/server'\n \nexport function middleware(request: NextRequest) {\n  // Check if user is authenticated\n  const token = request.cookies.get('token')\n  \n  if (!token) {\n    return NextResponse.redirect(new URL('/login', request.url))\n  }\n  \n  // Forward to edge compute\n  return NextResponse.next()\n}"
+  },
+  "tooltip": {
+    "buttonText": "Hover",
+    "tooltipText": "Add to library"
+  },
+  "checkbox": {
+    "labelText": "Accept terms and conditions"
+  },
+  "metadata": {
+    "title": "Nexus — AI-Powered CI/CD Platform",
+    "description": "Automate your entire CI/CD pipeline with AI-driven testing and deployment. Ship faster with Nexus."
+  }
+}

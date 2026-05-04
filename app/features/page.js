@@ -3,19 +3,12 @@
 import { CodeDemo } from "@/components/Custom/Code"
 import { IconCloudDemo } from "@/components/Custom/IconCloudDemo"
 import { colors } from "@/Constants/Color"
+import config from "@/customise.json"
 
 const theme = colors.dark;
 
-const UI = {
-    headerTitle: "Product Features",
-    headerSubtitle: "Deep dive into the architecture that powers your next big idea.",
-    developerTitle: "Developer Experience First.",
-    developerDesc: "Ship directly to the edge with no configuration. Automatic previews and frictionless deploys. Write code, we handle the rest.",
-    integrationTitle: "Ecosystem Integration",
-    integrationDesc: "Connects beautifully with everything your team already uses. No vendors lock-in. Just pure API-driven flexibility."
-}
-
 export default function FeaturesPage() {
+    const UI = config.featuresPage;
     return (
         <div style={{ backgroundColor: theme.base.background, minHeight: "100vh" }}>
 

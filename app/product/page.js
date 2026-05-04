@@ -3,15 +3,12 @@
 import { MarqueeDemo } from "@/components/Custom/MarqueeDemo"
 import ShiftingCountdown from "@/components/Custom/ShiftingCountDown"
 import { colors } from "@/Constants/Color"
+import config from "@/customise.json"
 
 const theme = colors.dark;
 
-const UI = {
-    launchHeader: "Ripple is dropping soon.",
-    launchSub: "Early access granted to the first 500 customers. Get ready to scale.",
-}
-
 export default function ProductPage() {
+    const UI = config.productPage;
     return (
         <div style={{ backgroundColor: theme.base.background, minHeight: "100vh" }}>
             <section className="py-32 px-4 text-center border-b" style={{ borderColor: theme.border.default, color: theme.text.primary }}>
